@@ -1,0 +1,1 @@
+# Sentiment-Aligned AI Text Generator\n\n**Applicant:** Sudheer Konduboina — Fresher seeking a remote ML internship.\n\nThis project detects the sentiment of a prompt and generates creative text aligned with that sentiment using pretrained Transformer models. Built with Streamlit and deployable on Render.\n
