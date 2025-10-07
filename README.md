@@ -6,7 +6,7 @@ A web application that detects the sentiment of a user-provided prompt and gener
 
 ## 🚀 Live Demo
 
-  https://ai-text-generator-sentiment.onrender.com
+  https://ai-sentiment-text-generator-s.streamlit.app/
 
 ---
 
