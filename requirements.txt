@@ -1,7 +1,8 @@
 streamlit>=1.25
 transformers>=4.30
 torch>=1.13
-sentencepiece
 streamlit
-transformers
-torch
+streamlit==1.29.0
+transformers==4.35.0
+torch==2.1.0
+sentencepiece
