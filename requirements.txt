@@ -2,3 +2,6 @@ streamlit>=1.25
 transformers>=4.30
 torch>=1.13
 sentencepiece
+streamlit
+transformers
+torch
