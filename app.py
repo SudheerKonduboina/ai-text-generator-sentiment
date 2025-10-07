@@ -36,7 +36,11 @@ with col_main:
     st.markdown("Enter a short prompt. The app will detect the sentiment and generate creative text.")
 
     prompt = st.text_area("Your prompt", placeholder="e.g. Describe a rainy afternoon...", height=120)
-    length_option = st.selectbox("Output length", ["Short (~50 words)", "Medium (~120 words)", "Long (~220 words)"], index=1)
+    length_option = st.selectbox(
+        "Output length",
+        ["Short (~50 words)", "Medium (~120 words)", "Long (~220 words)"],
+        index=1
+    )
     max_length_map = {"Short (~50 words)": 80, "Medium (~120 words)": 200, "Long (~220 words)": 380}
     max_length = max_length_map[length_option]
 
@@ -47,21 +51,17 @@ with col_main:
             st.warning("Please enter a prompt before starting.")
         else:
             with st.spinner("Loading model and generating text..."):
-                # Lazy load the models only when user clicks start
-                models = load_models()  
-
-                # Generate sentiment-aligned text
+                models = load_models()  # Lazy load the models
                 detected, generated = analyze_sentiment_and_generate(models, prompt, max_length=max_length)
 
                 # Store in history
                 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-                item = {
+                st.session_state.history.append({
                     "prompt": prompt,
                     "detected_sentiment": detected,
                     "generated_text": generated,
-                    "timestamp": timestamp,
-                }
-                st.session_state.history.append(item)
+                    "timestamp": timestamp
+                })
 
                 # Display results
                 st.success(f"Detected sentiment: {detected}")

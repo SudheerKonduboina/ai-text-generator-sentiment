@@ -39,7 +39,7 @@ def craft_prompt(user_prompt: str, sentiment_label: str) -> str:
     tone = tone_map.get(sentiment_label.upper(), "neutral and descriptive")
     return f"Write a single, coherent paragraph in a {tone} tone about the following topic:\n{user_prompt}"
 
-def analyze_and_generate(models, prompt: str, max_tokens: int = 200):
+def analyze_sentiment_and_generate(models, prompt: str, max_length: int = 200):
     """
     Detect sentiment and generate aligned text.
     """
@@ -64,7 +64,7 @@ def analyze_and_generate(models, prompt: str, max_tokens: int = 200):
     # 3. Generate text
     outputs = models["generator"](
         gen_prompt,
-        max_new_tokens=max_tokens,
+        max_new_tokens=max_length,
         do_sample=True,
         top_k=50,
         top_p=0.95,
@@ -74,6 +74,6 @@ def analyze_and_generate(models, prompt: str, max_tokens: int = 200):
     generated = outputs[0]["generated_text"]
 
     # 4. Cleanup repetitive/junk text
-    generated = re.sub(r"\s+---.*", "", generated)  # Remove separators
+    generated = re.sub(r"\s+---.*", "", generated)
     generated = generated.strip()
     return label, generated
