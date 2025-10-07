@@ -1,6 +1,7 @@
 import streamlit as st
 from utils import load_models, analyze_and_generate
 import time
+import os
 
 st.set_page_config(page_title="Sentiment-Aligned AI Writer", layout="wide")
 
@@ -67,3 +68,7 @@ with col_main:
                     file_name=f"generated_{detected.lower()}_{int(time.time())}.txt",
                     mime="text/plain",
                 )
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    st.run(host="0.0.0.0", port=port)
