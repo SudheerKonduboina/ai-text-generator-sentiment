@@ -24,9 +24,12 @@ A web application that detects the sentiment of a user-provided prompt and gener
 
 Follow these steps to run the project locally and deploy to Render.
 
-### 1. Clone the repository
+
+
 
 ```bash
+###1. Clone the repository
+
 git clone https://github.com/SudheerKonduboina/ai-text-generator-sentiment.git
 cd ai-text-generator-sentiment
 
